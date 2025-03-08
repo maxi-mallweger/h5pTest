@@ -16,12 +16,14 @@
         frameCss: "assets/styles/h5p.css",
         // Fix path concatenation to prevent double slashes
         customPath: function (path) {
+          // If path includes content or libraries, handle it by adding the base path correctly
           if (
             path.indexOf("content") !== -1 ||
             path.indexOf("libraries") !== -1
           ) {
-            // Ensure no double slash (handle edge cases)
-            return "/h5pTest" + path.replace(/^\/+/, ""); // Remove leading slash
+            // Ensure the base URL is properly concatenated without double slashes
+            const basePath = "/h5pTest";
+            return basePath + path.replace(/^\/+/, ""); // Remove leading slashes, then prepend the base path
           }
           return path;
         },
