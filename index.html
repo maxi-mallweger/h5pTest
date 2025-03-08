@@ -2,25 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>H5P Interactive Book</title>
-    <script src="dist/main.bundle.js"></script>
-    <link rel="stylesheet" href="dist/styles/h5p.css" />
+    <script type="text/javascript" src="assets/main.bundle.js"></script>
   </head>
   <body>
     <div id="h5p-container"></div>
 
     <script>
-      window.onload = function () {
-        if (typeof H5PStandalone !== "undefined" && H5PStandalone.H5P) {
-          console.log("✅ H5PStandalone loaded successfully.");
-          new H5PStandalone.H5P("h5p-container", "interactive-book.h5p");
-        } else {
-          console.error(
-            "❌ H5PStandalone is not defined or H5P function is missing!"
-          );
-        }
+      const el = document.getElementById("h5p-container");
+      const options = {
+        h5pJsonPath: "/interacive-book",
+        frameJs: "/assets/frame.bundle.js",
+        frameCss: "/assets/styles/h5p.css",
       };
+      new H5PStandalone.H5P(el, options);
     </script>
   </body>
 </html>
