@@ -9,13 +9,18 @@
     <div id="h5p-container"></div>
 
     <script>
+      import { H5P } from "h5p-standalone"; // ES6
+      // const { H5P } = require('h5p-standalone'); AMD
+      // const { H5P } = 'H5PStandalone'; // object destructuring
+
       const el = document.getElementById("h5p-container");
       const options = {
-        h5pJsonPath: "/interactive-book",
+        h5pJsonPath: "/h5p-folder",
         frameJs: "/assets/frame.bundle.js",
         frameCss: "/assets/styles/h5p.css",
       };
-      new H5PStandalone.H5P(el, options);
+
+      new H5P(el, options);
     </script>
   </body>
 </html>
