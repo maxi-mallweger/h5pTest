@@ -11,16 +11,17 @@
     <script>
       const el = document.getElementById("h5p-container");
       const options = {
-        h5pJsonPath: "h5p-folder/", // Make sure this is relative to the repo
+        h5pJsonPath: "h5p-folder/", // Ensure this is relative to the repo
         frameJs: "assets/frame.bundle.js",
         frameCss: "assets/styles/h5p.css",
-        // Add base path configuration if needed
+        // Fix path concatenation to prevent double slashes
         customPath: function (path) {
           if (
             path.indexOf("content") !== -1 ||
             path.indexOf("libraries") !== -1
           ) {
-            return "/h5pTest/" + path; // Prefix the correct base path
+            // Ensure no double slash (handle edge cases)
+            return "/YOUR_REPO_NAME" + path.replace(/^\/+/, ""); // Remove leading slash
           }
           return path;
         },
