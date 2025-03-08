@@ -12,11 +12,13 @@
 
     <script>
       window.onload = function () {
-        if (typeof H5PStandalone !== "undefined") {
+        if (typeof H5PStandalone !== "undefined" && H5PStandalone.H5P) {
           console.log("✅ H5PStandalone loaded successfully.");
-          H5PStandalone.load("h5p-container", "interactive-book.h5p");
+          new H5PStandalone.H5P("h5p-container", "interactive-book.h5p");
         } else {
-          console.error("❌ H5PStandalone is not defined!");
+          console.error(
+            "❌ H5PStandalone is not defined or H5P function is missing!"
+          );
         }
       };
     </script>
