@@ -11,38 +11,11 @@
     <script>
       const el = document.getElementById("h5p-container");
       const options = {
-        h5pJsonPath: "h5p-folder/", // The H5P content folder
-        frameJs: "assets/frame.bundle.js", // Path to H5P frame JS
-        frameCss: "assets/styles/h5p.css", // Path to H5P frame CSS
+        h5pJsonPath: "/h5pTest/h5p-folder/", // Path adjusted for GitHub Pages
+        frameJs: "/h5pTest/assets/frame.bundle.js", // Adjusted path
+        frameCss: "/h5pTest/assets/styles/h5p.css", // Adjusted path
       };
-
-      // Fix the paths to images and other assets manually
-      const baseUrl = "https://maxi-mallweger.github.io/h5pTest/"; // Replace YOUR_REPO_NAME with your actual repo name
-
-      // Function to rewrite paths
-      const rewritePaths = (data) => {
-        // Rewrite the JSON paths for content, images, and other assets
-        if (data && data.assets) {
-          data.assets.forEach((asset) => {
-            // If the asset is an image or library, rewrite the path
-            if (asset.path) {
-              asset.path = baseUrl + asset.path.replace(/^\/+/, ""); // Fix leading slashes and add base URL
-            }
-          });
-        }
-      };
-
-      // Load the H5P content and apply the path fix
-      fetch(options.h5pJsonPath + "h5p.json")
-        .then((response) => response.json())
-        .then((data) => {
-          // Apply path fixes
-          rewritePaths(data);
-
-          // Initialize the H5P content with the fixed data
-          new H5PStandalone.H5P(el, options);
-        })
-        .catch((error) => console.error("Error loading H5P content:", error));
+      new H5PStandalone.H5P(el, options);
     </script>
   </body>
 </html>
